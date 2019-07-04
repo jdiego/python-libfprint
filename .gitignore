@@ -1,0 +1,8 @@
+fprint.c
+fprint.so
+build
+dist
+.*
+!.gitignore
+*.egg-info
+wheelhouse

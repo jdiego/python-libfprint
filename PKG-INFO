@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: python-libfprint
+Version: 0.2.1
+Summary: Wrapper for libfprint v0.99
+Home-page: https://github.com/jdiego/python-libfprint
+Author: Diego Saraiva
+License: UNKNOWN
+Project-URL: Source, https://github.com/jdiego/python-libfprint
+Description: # Requirements
+        
+        - Cython >= 0.27
+        - libfprint == 0.99.0
+        
+        # Install
+        
+        ```
+        pip install python-libfprint
+        ```
+        
+        # Usage
+        
+        ```python
+        import fprint
+        
+        fprint.init()
+        devices = fprint.DiscoveredDevices()
+        
+        if len(devices) > 0:
+            dev = devices[0].open_device()
+            print_data = dev.enroll_finger_loop()
+            print_data = fprint.PrintData.from_data(print_data.data)
+            result = dev.verify_finger_loop(print_data)
+            assert result is True
+            dev.close()
+        ```
+        
+Keywords: fingerprint,fprint
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
